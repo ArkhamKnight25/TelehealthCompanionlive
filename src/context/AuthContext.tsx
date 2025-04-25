@@ -10,9 +10,7 @@ interface AuthContextType {
   setIsAuthenticated: (value: boolean) => void;
   userName: string | null;
   setUserName: (name: string | null) => void;
-  userId: string | null; // Add userId to the context interface
   logout: () => void;
-  login: (userData: any, userType: UserType) => void; // Add login to interface
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -20,8 +18,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [userType, setUserType] = useState<UserType>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [userName, setUserName] = useState<string | null>(localStorage.getItem("userName"));
-  const [userId, setUserId] = useState<string | null>(localStorage.getItem("userId")); // Add missing userId state
+  const [userName, setUserName] = useState<string | null>(null);
   
   // Check localStorage on initial load
   useEffect(() => {
@@ -59,20 +56,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     
     window.location.href = "/login"; // Force a full page reload
   };
-
-  // Make sure to update userName from localStorage on login
-  const login = (userData: any, userType: UserType) => {
-    // Store user data in localStorage
-    localStorage.setItem("userId", userData.id);
-    localStorage.setItem("userName", userData.name); // Store the actual name
-    localStorage.setItem("userType", userType);
-    
-    // Update state
-    setUserId(userData.id);
-    setUserName(userData.name); // Use the name from userData
-    setUserType(userType);
-    setIsAuthenticated(true); // Also set this
-  };
   
   return (
     <AuthContext.Provider
@@ -83,9 +66,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setIsAuthenticated,
         userName,
         setUserName: setAuthUserName, // Add this new method
-        userId, // Add userId to the context
-        logout,
-        login // Add login to the context
+        logout
       }}
     >
       {children}
