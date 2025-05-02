@@ -47,11 +47,7 @@ const About = () => {
             ensure the highest standards of care.
           </p>
           
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
-          <p className="mb-2">For any inquiries or support, please contact us at:</p>
-          <p className="mb-1"><strong>Email:</strong> support@telehealthcompanion.com</p>
-          <p className="mb-1"><strong>Phone:</strong> +1 (555) 123-4567</p>
-          <p className="mb-6"><strong>Hours:</strong> Monday to Friday, 9AM - 7PM</p>
+          
         </div>
       </div>
     </div>
