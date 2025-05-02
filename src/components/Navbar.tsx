@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <Link to="/home" className="hover:text-blue-200">Home</Link>
           <Link to="/about" className="hover:text-blue-200">About</Link>
-          <Link to="/pricing" className="hover:text-blue-200">Pricing</Link>
+{/*           <Link to="/pricing" className="hover:text-blue-200">Pricing</Link> */}
           
           {isAuthenticated ? (
             <>
