@@ -82,7 +82,7 @@ function App() {
             <Route path="/" element={<InitialRedirect />} />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/pricing" element={<Pricing />} />
+{/*             <Route path="/pricing" element={<Pricing />} /> */}
             <Route path="/login" element={<LogIn />} />
             <Route path="/signup" element={<SignUp />} />
 
